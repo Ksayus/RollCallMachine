@@ -18,6 +18,9 @@ int LineNumber = 0;
 
 string filename = "NameList.txt";
 
+string constLoopLong = "350";
+string constNumberLong = "1";
+
 string Lines;
 string List[MaxNumber]{};
 string ListStorager[MaxNumber]{};
@@ -30,11 +33,25 @@ void CheckFlie()
 	{
 		ofstream file("NameList.txt");//创建一个输出流对象file
 	}
-	if ((_access("./NumberExtractions.txt", 0)) == -1)
+	if ((_access("./NumberLong.txt", 0)) == -1)
 	{
-		ofstream file("./NumberExtractions.txt");//创建一个输出流对象file
+		ofstream file("./NumberLong.txt");//创建一个输出流对象file
+		ofstream outfile;
+		outfile.open("./NumberLong.txt",ios::out);
+		outfile << constNumberLong;
+		outfile.close();
+	}
+	if ((_access("./LoopLong", 0)) == -1)
+	{
+		ofstream file("./LoopLong.txt");//创建一个输出流对象file
+		ofstream outfile;
+		outfile.open("./LoopLong.txt", ios::out);
+		outfile << constLoopLong;
+		outfile.close();
 	}
 }
+
+
 
 int GetRand(int min, int max) {
 	return (rand() % (max - min + 1)) + min;
@@ -69,13 +86,31 @@ int ReadingListStorager()
 
 	cout << check << endl;
 
-	filenumber.open("./NumberExtractions.txt", ios::out);
+	filenumber.open("./NumberLong.txt", ios::in);
 
 	file.close();
+	string NumberLongString;
+
+	while (getline(filenumber, NumberLongString))
+	{
+		cout << NumberLongString << endl;
+	}
+
 	//LineNumber == check;
 	//cout << check << endl;
-	filenumber << check;
+	//filenumber << check;
 	filenumber.close();
+
+	fstream Loopfile;
+	string LoopLongString;
+	Loopfile.open("./LoopLong.txt", ios::in);
+	while (getline(Loopfile, LoopLongString))
+	{
+		cout << LoopLongString << endl;
+	}
+	Loopfile.close();
+	int LoopLong = stoi(LoopLongString);
+	int NumberLong = stoi(NumberLongString);
 	
 
 
@@ -93,14 +128,14 @@ int ReadingListStorager()
 	hdc = GetWindowDC(GetDesktopWindow());
 	POINT p{};
 	//GetCursorPos(&p);//获取鼠标坐标 
-	int times = 350;
+	int times = LoopLong;
 	while (times) {
 		int midnumber = rand() % check;
 
 		LPCSTR lpcstr = ListStorager[midnumber].c_str();
 
 		//SetCursorPos(p.x, p.y);//更改鼠标坐标
-		TextOutA(hdc, GetRand(10, client_width), GetRand(10, client_height), lpcstr, 3);
+		TextOutA(hdc, GetRand(10, client_width), GetRand(10, client_height), lpcstr, NumberLong);
 		Sleep(1);
 		times--;
 		if (GetAsyncKeyState(VK_CONTROL) && GetAsyncKeyState('E')) break;//按下组合键停止

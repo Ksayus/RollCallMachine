@@ -34,7 +34,10 @@
     <Text Include="NameList.txt">
       <Filter>源文件</Filter>
     </Text>
-    <Text Include="NumberExtractions.txt">
+    <Text Include="NumberLong.txt">
+      <Filter>源文件</Filter>
+    </Text>
+    <Text Include="LoopLong.txt">
       <Filter>源文件</Filter>
     </Text>
   </ItemGroup>

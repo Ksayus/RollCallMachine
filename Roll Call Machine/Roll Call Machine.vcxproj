@@ -131,8 +131,9 @@
     <ClCompile Include="ReadingList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="LoopLong.txt" />
     <Text Include="NameList.txt" />
-    <Text Include="NumberExtractions.txt" />
+    <Text Include="NumberLong.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReadingList.h" />
