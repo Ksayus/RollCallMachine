@@ -64,42 +64,45 @@ int ReadingListStorager()
 	std::ifstream file;
 	std::fstream filenumber;
 	file.open("./NameList.txt", ios::in);
-	
+
+
+
+	char NumberLongStringchar[MaxNumber]{};
 
 	int check = 0;
 	//read.open("./NameList.txt");
 	while (getline(file, List[check]))
 	{
 		cout << List[check] << endl;
+		cout << List[check].length() << endl;
+
+		//int NumberLong = stoi(NumberLongString);
+		int NumberLong = List[check].length();
+		NumberLongStringchar[check] = NumberLong;
+
 		ListStorager[check] = List[check];
 		//cout << ListStorager[check] << endl;//输出读取的文本文件数据
 		check++;
 	}
 
 	// << List[check] << endl;
-	char savename[MaxNumber];
+	/*char savename[MaxNumber];
 	while (file.getline(savename, sizeof(savename)))
 	{
 		cout << savename << endl;
-	}
+	}*/
 
 
 	cout << check << endl;
-
-	filenumber.open("./NumberLong.txt", ios::in);
-
 	file.close();
-	string NumberLongString;
 
+	/*filenumber.open("./NumberLong.txt", ios::in);
 	while (getline(filenumber, NumberLongString))
 	{
 		cout << NumberLongString << endl;
+		
 	}
-
-	//LineNumber == check;
-	//cout << check << endl;
-	//filenumber << check;
-	filenumber.close();
+	filenumber.close();*/
 
 	fstream Loopfile;
 	string LoopLongString;
@@ -110,7 +113,6 @@ int ReadingListStorager()
 	}
 	Loopfile.close();
 	int LoopLong = stoi(LoopLongString);
-	int NumberLong = stoi(NumberLongString);
 	
 
 
@@ -134,8 +136,10 @@ int ReadingListStorager()
 
 		LPCSTR lpcstr = ListStorager[midnumber].c_str();
 
+		int LongNumber = NumberLongStringchar[midnumber];
+
 		//SetCursorPos(p.x, p.y);//更改鼠标坐标
-		TextOutA(hdc, GetRand(10, client_width), GetRand(10, client_height), lpcstr, NumberLong);
+		TextOutA(hdc, GetRand(10, client_width), GetRand(10, client_height), lpcstr, LongNumber);
 		Sleep(1);
 		times--;
 		if (GetAsyncKeyState(VK_CONTROL) && GetAsyncKeyState('E')) break;//按下组合键停止
