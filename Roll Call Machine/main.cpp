@@ -3,7 +3,7 @@
 #include "ReadingList.h"
 using namespace std;
 
-//#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) // 设置入口地址
+#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) // 设置入口地址
 
 int main()
 {
